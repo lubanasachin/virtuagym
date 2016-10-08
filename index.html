@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="@SachinLubana">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Workout: Do || Die</title>
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <link href="dist/css/custom.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <div class="pos-f-t">
+    <nav class="navbar navbar-light bg-faded text-xs-right">
+        <a class="navbar-brand" href="#">Workout Plan</a>
+        <button type="button" class="btn btn-secondary" id="addNewPlanBtn">Add New</button>
+        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+    </nav>
+  </div>
+  <div class="container" id="listWorkoutPlan"></div>
+  <div class="container" id="modifyWorkoutPlan">
+    <div class="row">
+      <div class="addContainer">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-block">
+                <div class="form-group planNameDiv">
+                  <label class="col-form-label" for="planNameTxt">Plan Name</label>
+                  <input type="text" class="form-control form-control-danger" id="planNameTxt">
+                  <div class="form-control-feedback planNameMsg">Sorry, that field is required?</div>
+                </div>
+                <div class="form-group">
+                  <label>Workout Day</label>
+                  <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active daysOpt"><input type="radio" name="daysOpt" autocomplete="off" checked value='Mo'>Mo</label>
+                    <label class="btn btn-primary daysOpt"><input type="radio" name="daysOpt" autocomplete="off" value='Tu'>Tu</label>
+                    <label class="btn btn-primary daysOpt"><input type="radio" name="daysOpt" autocomplete="off" value='We'>We</label>
+                    <label class="btn btn-primary daysOpt"><input type="radio" name="daysOpt" autocomplete="off" value='Th'>Th</label>
+                    <label class="btn btn-primary daysOpt"><input type="radio" name="daysOpt" autocomplete="off" value='Fr'>Fr</label>
+                    <label class="btn btn-primary daysOpt"><input type="radio" name="daysOpt" autocomplete="off" value='Sa'>Sa</label>
+                    <label class="btn btn-primary daysOpt"><input type="radio" name="daysOpt" autocomplete="off" value='Su'>Su</label>
+                  </div>
+                </div>
+                <div class="form-group"><label for="formGroupExampleInput">Add Exercises</label></div>             
+                <div class="form-group exerciseList" id="exerciseList"></div>
+				<button type="button" class="btn btn-primary btn-lg btn-block" id="savePlanBtn">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</body>
+<script src="dist/js/jquery.min.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+<script src="dist/js/main.js"></script>
+</html>
