@@ -151,7 +151,7 @@ var woMain = {},
 			$(document.createElement("div")).attr({"class": "card-block", "id" : "cardblock_"+id}).appendTo("#card_"+id);
 			$(document.createElement("h4")).attr({"class": "card-title"}).append(val.plan_name).appendTo("#cardblock_"+id);
 			$(document.createElement("p")).attr({"class": "card-text"}).text(val.message).appendTo("#cardblock_"+id);
-			$(document.createElement("p")).attr({"class": "card-text"}).html("<small class='text-muted'>Last updated "+val.time+" mins ago</small>").appendTo("#cardblock_"+id);
+			$(document.createElement("p")).attr({"class": "card-text"}).html("<small class='text-muted'>"+val.time+"</small>").appendTo("#cardblock_"+id);
 			$(document.createElement("a")).attr({"class": "btn btn-primary", "href": "#"}).text("Edit").appendTo("#cardblock_"+id).on('click',function() {
 				woMain.getPlanDetails(val.id);	
 			});

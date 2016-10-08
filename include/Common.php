@@ -39,8 +39,14 @@ function getListOfWorkouts() {
     if($result['rows']) {
         foreach($result['rows'] as $val) {
             $val = (array) $val;
-			$val['time'] = round($val['modified']);
-			$rand = rand(0,count($MOTIVATION)-1);
+			$val['time'] = "Last updated ".round($val['modified'])." mins ago";
+			if($val['modified'] >= 60 && $val['modified'] <= 1440) {
+				$val['time'] = "Last updated ".round($val['modified']/60)." hours ago";
+			} elseif($val['modified'] > 1440) {
+				$val['time'] = "Last updated ".round(($val['modified']/60)/24)." days ago";
+			} 
+			//$rand = rand(0,count($MOTIVATION)-1);
+			$rand = array_rand($MOTIVATION);
 			$val['message'] = '"'.$MOTIVATION[$rand].'"';
             array_push($responseArr, $val);
         }
@@ -117,7 +123,7 @@ function addNewWorkoutPlan($planDetails) {
 	if($ret === -1) return array('type' => 'failed', 'descr' => $RESPMSG[105]);
 	if($ret === 0) return array('type' => 'failed', 'descr' => $RESPMSG[106]);
 
-    $query = "insert into plan (plan_name,plan_difficulty) values(?,1)";
+    $query = "insert into plan (plan_name,plan_difficulty,created,modified) values(?,1,now(),now())";
     $arrParams = array('s', &$planDetails['name']);
     $result = $db->queryDb($query,$arrParams);
     if(!$result['insert_id']) return array('type' => 'failed', 'descr' => $RESPMSG[107]);
@@ -148,7 +154,7 @@ function updateWorkoutPlan($planId,$planDetails) {
     if($ret === -1) return array('type' => 'failed', 'descr' => $RESPMSG[105]);
     if($ret === 0) return array('type' => 'failed', 'descr' => $RESPMSG[106]);
 
-	$query = "update plan set plan_name = ? where id = ? limit 1";
+	$query = "update plan set plan_name = ?, modified = now() where id = ? limit 1";
     $arrParams = array('ss', &$planDetails['name'],&$planId);
     $result = $db->queryDb($query,$arrParams);
 
